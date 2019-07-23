@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Welcome from './Welcome';
 
 ReactDOM.render(
-  <h1>Hi, world!</h1>,
-  document.getElementById('root2')
-);
+  <Welcome name='yongyan'/>,
+  document.getElementById('root')
+)
