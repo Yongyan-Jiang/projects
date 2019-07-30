@@ -4,6 +4,7 @@ import './reset.css'
 import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
+import UserDialog from './UserDialog'
 
 
 class App extends Component {
@@ -38,22 +39,26 @@ class App extends Component {
         <ol className = 'todoList'>
           {todos}
         </ol>
+        <UserDialog />
       </div>
     )
   }
   componentDidUpdate(){
     
   }
+
   toggle(e, todo){
     todo.status = todo.status === 'completed' ? '' : 'completed'
     this.setState(this.state) 
   }
+
   changeTitle(event){
     this.setState({
       newTodo: event.target.value,
       todoList: this.state.todoList
     })
   }
+
   addTodo(event){
     this.state.todoList.push({
       id: idMaker(),
