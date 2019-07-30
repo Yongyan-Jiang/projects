@@ -6,20 +6,6 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import * as localStore from './localStore'
 
-import AV from 'leancloud-storage'
-var APP_ID = 'z5kYOKNdDW7zKVc8N92lfOw7-gzGzoHsz'
-var APP_KEY = 'r5P1kesCadRcUsjGBOXL8pXe'
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-})
-
-var TestObject = AV.Object.extend('TestObject');
-var testObject = new TestObject();
-testObject.set('words', 'Hello world!');
-testObject.save().then(function (testObject) {
-  console.log('保存成功。')
-})
 
 class App extends Component {
   constructor(props){
