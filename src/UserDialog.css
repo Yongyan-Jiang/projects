@@ -1,4 +1,4 @@
-.UserDialog-Wrapper{ 
+.UserDialog-Wrapper { 
   /*全屏*/
   position: fixed; 
   top: 0; 
@@ -9,8 +9,10 @@
   display: flex; 
   justify-content: center; 
   align-items: center;
+  /*给 dialog 添加遮罩效果*/
+  background: hsla(0,0%,0%,0.40);
 }
-.UserDialog{
+.UserDialog {
   border: 1px solid;
   border-radius: 4px;
   min-width: 20em;
@@ -33,9 +35,19 @@
   display: flex; 
   padding: .3em 0; 
 }
+
 .UserDialog form > .row > label:first-child { 
   width: 4em; 
 }
-.UserDialog form > .row .actions { 
+.UserDialog form > .row.actions { 
   padding-left: 4em; 
+  display: flex; 
+  align-items: center;
+}
+.UserDialog form > .row.actions button { 
+  margin-right: .5em; 
+}
+.UserDialog button {
+  font: inherit; 
+  padding: .2em;
 }
