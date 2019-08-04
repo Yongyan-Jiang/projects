@@ -6,21 +6,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 import {getCurrentUser, signOut} from './leanCloud'
-import AV from './leanCloud'
 
-// 声明类型
-var TodoFolder = AV.Object.extend('TodoFolder');
-// 新建对象
-var todoFolder = new TodoFolder();
-// 设置名称
-todoFolder.set('name','工作');
-// 设置优先级
-todoFolder.set('priority',1);
-todoFolder.save().then(function (todo) {
-  console.log('objectId is ' + todo.id);
-}, function (error) {
-  console.error(error);
-});
 
 class App extends Component {
   constructor(props){
@@ -43,7 +29,6 @@ class App extends Component {
       )
     })
     
-
     return (
       <div className="App">
         <h1>{this.state.user.username||'我'}的待办
