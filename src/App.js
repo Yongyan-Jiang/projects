@@ -5,7 +5,7 @@ import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
-import {getCurrentUser, signOut} from './leanCloud'
+import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
 
 class App extends Component {
@@ -80,15 +80,20 @@ class App extends Component {
   }
 
   addTodo(event){
-    this.state.todoList.push({
-      id: idMaker(),
+    let newTodo = {
       title: event.target.value,
       status: null,
       deleted: false
-    })
-    this.setState({
-      newTodo: '',
-      todoList: this.state.todoList
+    }
+    TodoModel.create(newTodo, (id) => {
+      newTodo.id = id
+      this.state.todoList.push(newTodo)
+      this.setState({
+        newTodo: '',
+        todoList: this.state.todoList
+      })
+    }, (error) => {
+      console.log(error)
     })
   }
   delete(event, todo){
@@ -98,10 +103,3 @@ class App extends Component {
 }
 
 export default App;
-
-let id = 0
-
-function idMaker(){
-  id += 1
-  return id
-}
